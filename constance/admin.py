@@ -28,6 +28,7 @@ except ImportError:  # Django < 1.4
 
 
 from . import LazyConfig, settings
+from .fields import CommaSeparatedList
 
 config = LazyConfig()
 
@@ -49,6 +50,7 @@ FIELDS = {
     date: (fields.DateField, {'widget': widgets.AdminDateWidget}),
     time: (fields.TimeField, {'widget': widgets.AdminTimeWidget}),
     float: (fields.FloatField, {'widget': NUMERIC_WIDGET}),
+    list: (CommaSeparatedList, {'widget': forms.Textarea(attrs={'rows': 3})})
 }
 
 if not six.PY3:
